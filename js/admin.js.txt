@@ -1,0 +1,43 @@
+const adminForm = document.getElementById("adminForm");
+const categorySelect = document.getElementById("category");
+const descriptionInput = document.getElementById("description");
+const savedMessage = document.getElementById("savedMessage");
+
+const categories = ["Fruits", "Vegetables", "Groceries", "Dairy", "Household"];
+
+// Load default descriptions if not present
+categories.forEach(cat => {
+  if (!localStorage.getItem(cat)) {
+    switch(cat){
+      case "Fruits": localStorage.setItem(cat, "Fresh seasonal fruits available daily."); break;
+      case "Vegetables": localStorage.setItem(cat, "Organic and fresh vegetables from local farms."); break;
+      case "Groceries": localStorage.setItem(cat, "All essential grocery items for your daily needs."); break;
+      case "Dairy": localStorage.setItem(cat, "Milk, curd, butter, and other dairy products."); break;
+      case "Household": localStorage.setItem(cat, "All household cleaning and daily utility items."); break;
+    }
+  }
+});
+
+// Show description when category is selected
+function loadDescription() {
+  const cat = categorySelect.value;
+  descriptionInput.value = localStorage.getItem(cat);
+}
+
+categorySelect.addEventListener("change", loadDescription);
+window.onload = loadDescription;
+
+// Save description
+adminForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const cat = categorySelect.value;
+  const desc = descriptionInput.value.trim();
+  if(desc === "") return;
+
+  localStorage.setItem(cat, desc);
+  savedMessage.textContent = `Description for "${cat}" saved successfully!`;
+
+  setTimeout(() => {
+    savedMessage.textContent = "";
+  }, 3000);
+});
