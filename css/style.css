@@ -3,34 +3,20 @@
   box-sizing: border-box;
 }
 
-html, body {
+/* DEFAULT BODY (HOME PAGE WHITE) */
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
   font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #2c3e50;
   font-weight: bold;
-}
-
-/* 🔥 BACKGROUND IMAGE FIX (WORKS 100%) */
-html {
-  background: url("../images/shop(1).jpg") no-repeat center center fixed;
-  background-size: cover;
-}
-
-/* 50% OVERLAY */
-.bg-image::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.5);
-  z-index: -1;
 }
 
 /* NAVBAR */
 .navbar {
   background: #27ae60;
   color: white;
-  padding: 15px;
+  padding: 15px 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -43,28 +29,70 @@ html {
   margin-left: 15px;
 }
 
+/* HERO */
+.hero {
+  padding: 90px 20px;
+  text-align: center;
+  background: #27ae60;
+  color: white;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.feature-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* FOOTER */
+footer {
+  background: #27ae60;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* =============================== */
+/* PRODUCTS PAGE BACKGROUND ONLY */
+/* =============================== */
+
+.products-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background image with 50% opacity */
+.products-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../images/shop(1).jpg") no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
 /* PRODUCTS SECTION */
 .products-section {
   padding: 30px 15px;
   text-align: center;
-  background: transparent; /* 🔥 VERY IMPORTANT */
 }
 
-.products-section h2 {
-  background: rgba(39, 174, 96, 0.85);
-  color: white;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
-/* CATEGORY GRID */
+/* GRID */
 .categories-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
   max-width: 1000px;
-  margin: 25px auto;
+  margin: auto;
 }
 
 /* CARD */
@@ -72,7 +100,6 @@ html {
   background: rgba(255,255,255,0.9);
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 .category-card img {
@@ -82,6 +109,7 @@ html {
   border-radius: 10px;
 }
 
+/* BUTTON */
 .category-card button {
   margin-top: 10px;
   padding: 8px 12px;
@@ -92,15 +120,6 @@ html {
   font-weight: bold;
 }
 
-/* CATEGORY INFO */
-.category-info {
-  margin: 25px auto;
-  padding: 15px;
-  max-width: 800px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 10px;
-}
-
 /* MOBILE */
 @media (max-width: 600px) {
   .navbar {
@@ -108,43 +127,3 @@ html {
     text-align: center;
   }
   }
-/* ============================= */
-/* PRODUCTS PAGE BACKGROUND ONLY */
-/* ============================= */
-
-.products-page {
-  position: relative;
-  min-height: 100vh;
-}
-
-/* Background image */
-.products-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("../images/shop(1).jpg") no-repeat center center;
-  background-size: cover;
-  opacity: 0.5;   /* 50% opacity */
-  z-index: -1;
-}
-
-/* Make sure products section is transparent */
-.products-page .products-section {
-  background: transparent;
-}
-
-/* Cards readable */
-.products-page .category-card,
-.products-page .category-info {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-/* Mobile safety */
-@media (max-width: 600px) {
-  .products-page .navbar {
-    flex-direction: column;
-    text-align: center;
-  }
-  }
-  
-
