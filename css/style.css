@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 
-/* DEFAULT BODY (HOME PAGE WHITE) */
+/* DEFAULT BODY (WHITE FOR HOME PAGE) */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -29,12 +29,44 @@ body {
   margin-left: 15px;
 }
 
-/* HERO */
-.hero {
-  padding: 90px 20px;
+/* ===================== */
+/* HOME PAGE HERO */
+/* ===================== */
+
+.hero-home {
+  position: relative;
+  height: 80vh;               /* Desktop impact */
+  background: url("../images/shop.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  background: #27ae60;
   color: white;
+}
+
+/* GREEN OVERLAY */
+.hero-home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(39, 174, 96, 0.7);
+  z-index: 0;
+}
+
+.hero-home h2,
+.hero-home p {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-home h2 {
+  font-size: 2.5rem;
+}
+
+.hero-home p {
+  font-size: 1.2rem;
 }
 
 /* FEATURES */
@@ -61,7 +93,7 @@ footer {
 }
 
 /* =============================== */
-/* PRODUCTS PAGE BACKGROUND ONLY */
+/* PRODUCTS PAGE ONLY */
 /* =============================== */
 
 .products-page {
@@ -69,7 +101,7 @@ footer {
   min-height: 100vh;
 }
 
-/* Background image with 50% opacity */
+/* Products background image */
 .products-page::before {
   content: "";
   position: fixed;
@@ -86,7 +118,6 @@ footer {
   text-align: center;
 }
 
-/* GRID */
 .categories-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -95,7 +126,6 @@ footer {
   margin: auto;
 }
 
-/* CARD */
 .category-card {
   background: rgba(255,255,255,0.9);
   padding: 15px;
@@ -109,7 +139,6 @@ footer {
   border-radius: 10px;
 }
 
-/* BUTTON */
 .category-card button {
   margin-top: 10px;
   padding: 8px 12px;
@@ -120,10 +149,21 @@ footer {
   font-weight: bold;
 }
 
-/* MOBILE */
+/* ===================== */
+/* MOBILE ADJUSTMENTS */
+/* ===================== */
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
     text-align: center;
   }
+
+  .hero-home {
+    height: 60vh;
   }
+
+  .hero-home h2 {
+    font-size: 1.6rem;
+  }
+  }
+  
